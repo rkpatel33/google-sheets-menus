@@ -33,8 +33,6 @@ clasp pull
 ## Project IDs
 
 ```
-
 Engineering model       1aRFuOopt02qBeyhz9P68vVkrt_46moXFvMzk_lglo-pv75rkdfkoVzPM
 Heroku Inventory        1eK0CFHHBfaljCeGRsMn41bKraKoTc2sFaK5_l-1ecn5rWtgb6oJ3LK4d
-
 ```
