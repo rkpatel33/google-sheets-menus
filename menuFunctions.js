@@ -8,41 +8,45 @@ function onOpen() {
   // Or DocumentApp or FormApp.
   ui.createMenu('🔵 Albert')
 
-      // Formatting
-      // .addItem('# Number 0', 'formatNumber0')
-      // .addItem('# Number 0.00', 'formatNumber2')
-      // .addItem('$ Dollar $0', 'formatDollar0')
-      // .addItem('$ Dollar $0.00', 'formatDollar2')
-      // .addItem('% Precent 0%', 'formatPercent0')
-      // .addItem('% Percent 0.0%', 'formatPercent1')
-      // .addItem('% Percent 0.0.0%', 'formatPercent2')
+    // Formatting
+  // .addItem('# Number 0', 'formatNumber0')
+  // .addItem('# Number 0.00', 'formatNumber2')
+  // .addItem('$ Dollar $0', 'formatDollar0')
+  // .addItem('$ Dollar $0.00', 'formatDollar2')
+  // .addItem('% Precent 0%', 'formatPercent0')
+  // .addItem('% Percent 0.0%', 'formatPercent1')
+  // .addItem('% Percent 0.0.0%', 'formatPercent2')
 
-      .addItem('# 0', 'formatNumber0')
-      .addItem('# 0.00', 'formatNumber2')
-      .addItem('$ $0', 'formatDollar0')
-      .addItem('$ $0.00', 'formatDollar2')
-      .addItem('% 0%', 'formatPercent0')
-      .addItem('% 0.0%', 'formatPercent1')
-      .addItem('% 0.0.0%', 'formatPercent2')
+  .addItem('# 0', 'formatNumber0')
+  .addItem('# 0.00', 'formatNumber2')
+  .addItem('$ $0', 'formatDollar0')
+  .addItem('$ $0.00', 'formatDollar2')
+  .addItem('% 0%', 'formatPercent0')
+  .addItem('% 0.0%', 'formatPercent1')
+  .addItem('% 0.0.0%', 'formatPercent2')
 
-      // Dates
-      .addSeparator()
-      .addItem('mmm-dd-yyyy', 'formatDate1')
-      .addItem('mm-dd-yyyy', 'formatDate2')
+  // Dates
+  .addSeparator()
+  .addItem('mmm-dd-yyyy', 'formatDate1')
+  .addItem('mm-dd-yyyy', 'formatDate2')
 
-      // Filtering
-      .addSeparator()
-      .addItem('Filter toggle', 'toggleFilter')
-      .addItem('Filter on active cell', 'applyColumnFilter')
-      .addItem('Remove all filters', 'removeAllFilters')
+  // Filtering
+  .addSeparator()
+  .addItem('Filter toggle', 'toggleFilter')
+  .addItem('Filter on active cell', 'applyColumnFilter')
+  .addItem('Remove all filters', 'removeAllFilters')
 
-      // Sheet formatting
-      .addSeparator()
-      .addItem('Format sheet with defaults', 'formatSheetMenuItem')
+  // Sheet formatting
+  .addSeparator()
+  .addItem('Format sheet with defaults', 'formatSheetMenuItem')
 
-      // .addSubMenu(ui.createMenu('Sub-menu')
-      //     .addItem('Second item', 'menuItem2'))
-      .addToUi();
+    // Development
+  .addSeparator()
+  .addItem('Run dev function', 'sortRangeOnCell')
+
+  // .addSubMenu(ui.createMenu('Sub-menu')
+  //     .addItem('Second item', 'menuItem2'))
+  .addToUi();
 }
 
 function formatSheetMenuItem() {
