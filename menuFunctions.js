@@ -36,13 +36,17 @@ function onOpen() {
   .addItem('Filter on active cell', 'applyColumnFilter')
   .addItem('Remove all filters', 'removeAllFilters')
 
+  // Sorting
+  .addSeparator()
+  .addItem('Sort on active cell', 'sortRangeOnCell')
+
   // Sheet formatting
   .addSeparator()
   .addItem('Format sheet with defaults', 'formatSheetMenuItem')
 
     // Development
-  .addSeparator()
-  .addItem('Run dev function', 'sortRangeOnCell')
+  // .addSeparator()
+  // .addItem('Run dev command', 'sortRangeOnCell')
 
   // .addSubMenu(ui.createMenu('Sub-menu')
   //     .addItem('Second item', 'menuItem2'))
