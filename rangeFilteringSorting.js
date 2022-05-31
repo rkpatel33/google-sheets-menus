@@ -7,24 +7,20 @@ one above the other.
 
 // import 'google-apps-script';
 
-var SORT_ORDER_ASCENDING = false;
-
 function sortRangeOnCell() {
     Logger.log('Sorting range');
 
-    SORT_ORDER_ASCENDING = !SORT_ORDER_ASCENDING;
-
-    let activeSheet = SpreadsheetApp.getActiveSheet();
-    let activeRange = SpreadsheetApp.getActiveRange();
-    var areagRg = activeRange.getDataRegion();
+    let activeSh = SpreadsheetApp.getActiveSheet();
+    let activeRg = SpreadsheetApp.getActiveRange();
+    var areagRg = activeRg.getDataRegion();
 
     // Get first and last data cells excluding top row
     let numRows = areagRg.getNumRows();
     let numColumns = areagRg.getNumColumns();
     let firstDataCell = areagRg.getCell(2, 1);
-    let sortColumnNumber = activeRange.getColumn();
+    let sortColumnNumber = activeRg.getColumn();
 
-    dataRange = activeSheet.getRange(
+    dataRange = activeSh.getRange(
       firstDataCell.getRow(),
       firstDataCell.getColumn(),
       numRows - 1,
@@ -34,5 +30,4 @@ function sortRangeOnCell() {
     dataRange.sort({column: sortColumnNumber, ascending: true});
 
     Logger.log(`Sorted on column ${sortColumnNumber}`);
-    Logger.log(SORT_ORDER_ASCENDING);
 }
