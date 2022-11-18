@@ -51,6 +51,8 @@ function onOpen() {
   // .addSubMenu(ui.createMenu('Sub-menu')
   //     .addItem('Second item', 'menuItem2'))
   .addToUi();
+
+  SpreadsheetApp.getActive().toast("Alert loaded", "Albert", 1);
 }
 
 function formatSheetMenuItem() {
