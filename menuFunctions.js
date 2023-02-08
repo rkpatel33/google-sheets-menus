@@ -4,9 +4,12 @@
 
 function onOpen() {
 
+  var menuName = 'Rishi';
+  // var menuName = '🔵 Albert';
+
   var ui = SpreadsheetApp.getUi();
   // Or DocumentApp or FormApp.
-  ui.createMenu('🔵 Albert')
+  ui.createMenu(`🔵 ${menuName}`)
 
     // Formatting
   // .addItem('# Number 0', 'formatNumber0')
@@ -52,7 +55,7 @@ function onOpen() {
   //     .addItem('Second item', 'menuItem2'))
   .addToUi();
 
-  SpreadsheetApp.getActive().toast("Alert loaded", "Albert", 1);
+  SpreadsheetApp.getActive().toast(`Custom menu loaded`, `${menuName}`, 1);
 }
 
 function formatSheetMenuItem() {
