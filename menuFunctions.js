@@ -4,8 +4,8 @@
 
 function onOpen() {
 
-  var menuName = 'Rishi';
-  // var menuName = '🔵 Albert';
+  // var menuName = 'Rishi';
+  var menuName = 'Albert';
 
   var ui = SpreadsheetApp.getUi();
   // Or DocumentApp or FormApp.
@@ -69,7 +69,13 @@ function formatSheet(sheet) {
 
   var allCells = sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns());
   allCells.setFontFamily(null).setFontSize(10);
-  spreadsheet.getRange('A1').setFontSize(12).setFontWeight('bold');
+  var nextToTitle = sheet.getRange(1, 2).getValue();
+
+  // Only format title bigger if it seems to actually be a title, as opposed to a table starting
+  // on the first row.
+  if (nextToTitle == '') {
+    spreadsheet.getRange('A1').setFontSize(12).setFontWeight('bold');
+  }
 };
 
 // function formatSheetsAll() {
