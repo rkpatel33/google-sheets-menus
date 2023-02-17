@@ -36,7 +36,8 @@ function onOpen() {
   // Filtering
   .addSeparator()
   .addItem('Filter toggle', 'toggleFilter')
-  .addItem('Filter on active cell', 'applyColumnFilter')
+  .addItem('Filter on active cell', 'filterOnActiveCell')
+    .addItem('Filter on non-blank cells', 'fitlerOnNonBlanksCells')
   .addItem('Remove all filters', 'removeAllFilters')
 
   // Sorting

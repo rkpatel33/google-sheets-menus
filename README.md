@@ -28,6 +28,7 @@ Heroku Inventory                                   1eK0CFHHBfaljCeGRsMn41bKraKoT
 Infrastructure, Heroku, AWS and networking summary 1JvQHU02d6b7yiEHJKxccOpHilZSi6i8xiLscfqplH9O0pWgzhz-Z3xQd
 AWS migration model_2022-06-01                     168SGZDYf49mlvgSknYxFciDYM21a6mz3kz8W_jvYNcR1w9PLXbvlPg_h
 IncomeStatement AppScript                          1bzuRkPk0XNyG4lm9jcU3PAIXlQ4ep4mRDFEgh-wC7OtuyjDO3Bzrg5OW
+Albert SOC 2 Control Listing                       1HQ7cVs8ERnyyD0GWLQZ_4bQcRQVgDtz4b-Pn5yCovaYfC4zePv8icO7M 
 ```
 
 ## Clasp commands
