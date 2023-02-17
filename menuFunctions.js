@@ -4,57 +4,50 @@
 
 function onOpen() {
 
-  // var menuName = 'Rishi';
-  var menuName = 'Albert';
+  var menuName = 'Rishi';
+  // var menuName = 'Albert';
 
   var ui = SpreadsheetApp.getUi();
   // Or DocumentApp or FormApp.
   ui.createMenu(`🔵 ${menuName}`)
 
     // Formatting
-  // .addItem('# Number 0', 'formatNumber0')
-  // .addItem('# Number 0.00', 'formatNumber2')
-  // .addItem('$ Dollar $0', 'formatDollar0')
-  // .addItem('$ Dollar $0.00', 'formatDollar2')
-  // .addItem('% Precent 0%', 'formatPercent0')
-  // .addItem('% Percent 0.0%', 'formatPercent1')
-  // .addItem('% Percent 0.0.0%', 'formatPercent2')
+    .addItem('# 0', 'formatNumber0')
+    .addItem('# 0.00', 'formatNumber2')
+    .addItem('$ $0', 'formatDollar0')
+    .addItem('$ $0.00', 'formatDollar2')
+    .addItem('% 0%', 'formatPercent0')
+    .addItem('% 0.0%', 'formatPercent1')
+    .addItem('% 0.0.0%', 'formatPercent2')
 
-  .addItem('# 0', 'formatNumber0')
-  .addItem('# 0.00', 'formatNumber2')
-  .addItem('$ $0', 'formatDollar0')
-  .addItem('$ $0.00', 'formatDollar2')
-  .addItem('% 0%', 'formatPercent0')
-  .addItem('% 0.0%', 'formatPercent1')
-  .addItem('% 0.0.0%', 'formatPercent2')
+    // Dates
+    .addSeparator()
+    .addItem('mmm-dd-yyyy', 'formatDate1')
+    .addItem('mm-dd-yyyy', 'formatDate2')
 
-  // Dates
-  .addSeparator()
-  .addItem('mmm-dd-yyyy', 'formatDate1')
-  .addItem('mm-dd-yyyy', 'formatDate2')
-
-  // Filtering
-  .addSeparator()
-  .addItem('Filter toggle', 'toggleFilter')
-  .addItem('Filter on active cell', 'filterOnActiveCell')
+    // Filtering
+    .addSeparator()
+    .addItem('Filter toggle', 'toggleFilter')
+    .addItem('Filter on active cell', 'filterOnActiveCell')
     .addItem('Filter on non-blank cells', 'fitlerOnNonBlanksCells')
-  .addItem('Remove all filters', 'removeAllFilters')
+    .addItem('Remove all filters', 'removeAllFilters')
 
-  // Sorting
-  .addSeparator()
-  .addItem('Sort on active cell', 'sortRangeOnCell')
+    // Sorting
+    .addSeparator()
+    .addItem('Sort on active cell', 'sortRangeOnCell')
 
-  // Sheet formatting
-  .addSeparator()
-  .addItem('Format sheet with defaults', 'formatSheetMenuItem')
+    // Sheet formatting
+    .addSeparator()
+    .addItem('Format sheet with defaults', 'formatSheetMenuItem')
 
     // Development
-  // .addSeparator()
-  // .addItem('Run dev command', 'sortRangeOnCell')
+    // .addSeparator()
+    // .addItem('Run dev command', 'sortRangeOnCell')
 
-  // .addSubMenu(ui.createMenu('Sub-menu')
-  //     .addItem('Second item', 'menuItem2'))
-  .addToUi();
+    // Sub-menus
+    // .addSubMenu(ui.createMenu('Sub-menu')
+    //     .addItem('Second item', 'menuItem2'))
+    .addToUi();
 
   SpreadsheetApp.getActive().toast(`Custom menu loaded`, `${menuName}`, 1);
 }
