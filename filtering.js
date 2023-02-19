@@ -3,7 +3,7 @@
 // Scratch functions
 // **********************************************************
 
-function scratch() { 
+function scratch() {
   var activeCell = SpreadsheetApp.getCurrentCell();
   var activeColumn = activeCell.getColumn();
   var filter = activeCell.getFilter();
@@ -22,16 +22,43 @@ function toggleFilter() {
   var currentFilter = activeCell.getFilter();
   var currentCriteria = currentFilter.getColumnFilterCriteria(activeColumn);
 
-
   if (currentCriteria === null) {
-    applyColumnFilter();
+    filterOnActiveCell();
   } else {
     removeColumnFilter();
   }
+  SpreadsheetApp.getActive().toast('Toggled filter', '', 2);
 
 }
 
-function applyColumnFilter() { 
+/**
+ * Filter the active column on all non-blank cells
+ */
+function fitlerOnNonBlanksCells() {
+  // Setup
+  var activeCell = SpreadsheetApp.getCurrentCell();
+  var cellValue = activeCell.getValue();
+  var activeColumn = activeCell.getColumn();
+
+  // Get existing filter
+  var filter = activeCell.getFilter();
+  var filterCriteria = filter.getColumnFilterCriteria(activeColumn);
+
+  // Build a new filter critera object
+  var newFilterCriteria = SpreadsheetApp
+    .newFilterCriteria()
+    .setHiddenValues([''])
+    .build();
+
+  // Apply the new filter criteria
+  filter.setColumnFilterCriteria(activeColumn, newFilterCriteria);
+  SpreadsheetApp.getActive().toast('Filterd on non-blank cells', '', 2);
+}
+
+/**
+ * Filter the active column on the active cell value
+ */
+function filterOnActiveCell() {
   // Setup
   var activeCell = SpreadsheetApp.getCurrentCell();
   var cellValue = activeCell.getValue();
@@ -49,18 +76,29 @@ function applyColumnFilter() {
 
   // Apply the new filter criteria
   filter.setColumnFilterCriteria(activeColumn, newFilterCriteria);
+
+  SpreadsheetApp.getActive().toast('Filtered on active cell', '', 2);
 }
 
 
-function removeColumnFilter() { 
+function removeColumnFilter() {
   // Setup
   var activeCell = SpreadsheetApp.getCurrentCell();
   var cellValue = activeCell.getValue();
   var activeColumn = activeCell.getColumn();
 
   // Remove the criteria
-  var filter = activeCell.getFilter();
-  filter.removeColumnFilterCriteria(activeColumn);
+  // var filter = activeCell.getFilter();
+  // filter.removeColumnFilterCriteria(activeColumn);
+
+  // Build a new empty filter critera object (ie no filtering)
+  var newFilterCriteria = SpreadsheetApp
+    .newFilterCriteria()
+    .build();
+
+  // Apply the new filter criteria
+  filter.setColumnFilterCriteria(activeColumn, newFilterCriteria);
+  SpreadsheetApp.getActive().toast('Removed column filter', '', 2);
 }
 
 
@@ -79,4 +117,6 @@ function removeAllFilters(sheet) {
   else {
     Logger.log('There is no filter')
   }
+  SpreadsheetApp.getActive().toast('Removed all filters', '', 2);
+
 }

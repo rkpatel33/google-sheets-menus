@@ -4,45 +4,52 @@
 
 function onOpen() {
 
+  var menuName = 'Rishi';
+  // var menuName = 'Albert';
+
   var ui = SpreadsheetApp.getUi();
   // Or DocumentApp or FormApp.
-  ui.createMenu('🔵 Albert')
+  ui.createMenu(`🔵 ${menuName}`)
 
-      // Formatting
-      // .addItem('# Number 0', 'formatNumber0')
-      // .addItem('# Number 0.00', 'formatNumber2')
-      // .addItem('$ Dollar $0', 'formatDollar0')
-      // .addItem('$ Dollar $0.00', 'formatDollar2')
-      // .addItem('% Precent 0%', 'formatPercent0')
-      // .addItem('% Percent 0.0%', 'formatPercent1')
-      // .addItem('% Percent 0.0.0%', 'formatPercent2')
+    // Formatting
+    .addItem('# 0', 'formatNumber0')
+    .addItem('# 0.00', 'formatNumber2')
+    .addItem('$ $0', 'formatDollar0')
+    .addItem('$ $0.00', 'formatDollar2')
+    .addItem('% 0%', 'formatPercent0')
+    .addItem('% 0.0%', 'formatPercent1')
+    .addItem('% 0.0.0%', 'formatPercent2')
 
-      .addItem('# 0', 'formatNumber0')
-      .addItem('# 0.00', 'formatNumber2')
-      .addItem('$ $0', 'formatDollar0')
-      .addItem('$ $0.00', 'formatDollar2')
-      .addItem('% 0%', 'formatPercent0')
-      .addItem('% 0.0%', 'formatPercent1')
-      .addItem('% 0.0.0%', 'formatPercent2')
+    // Dates
+    .addSeparator()
+    .addItem('mmm-dd-yyyy', 'formatDate1')
+    .addItem('mm-dd-yyyy', 'formatDate2')
 
-      // Dates
-      .addSeparator()
-      .addItem('mmm-dd-yyyy', 'formatDate1')
-      .addItem('mm-dd-yyyy', 'formatDate2')
+    // Filtering
+    .addSeparator()
+    .addItem('Filter toggle', 'toggleFilter')
+    .addItem('Filter on active cell', 'filterOnActiveCell')
+    .addItem('Filter on non-blank cells', 'fitlerOnNonBlanksCells')
+    .addItem('Remove all filters', 'removeAllFilters')
 
-      // Filtering
-      .addSeparator()
-      .addItem('Filter toggle', 'toggleFilter')
-      .addItem('Filter on active cell', 'applyColumnFilter')
-      .addItem('Remove all filters', 'removeAllFilters')
+    // Sorting
+    .addSeparator()
+    .addItem('Sort on active cell', 'sortRangeOnCell')
 
-      // Sheet formatting
-      .addSeparator()
-      .addItem('Format sheet with defaults', 'formatSheetMenuItem')
+    // Sheet formatting
+    .addSeparator()
+    .addItem('Format sheet with defaults', 'formatSheetMenuItem')
 
-      // .addSubMenu(ui.createMenu('Sub-menu')
-      //     .addItem('Second item', 'menuItem2'))
-      .addToUi();
+    // Development
+    // .addSeparator()
+    // .addItem('Run dev command', 'sortRangeOnCell')
+
+    // Sub-menus
+    // .addSubMenu(ui.createMenu('Sub-menu')
+    //     .addItem('Second item', 'menuItem2'))
+    .addToUi();
+
+  SpreadsheetApp.getActive().toast(`Custom menu loaded`, `${menuName}`, 1);
 }
 
 function formatSheetMenuItem() {
@@ -56,7 +63,13 @@ function formatSheet(sheet) {
 
   var allCells = sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns());
   allCells.setFontFamily(null).setFontSize(10);
-  spreadsheet.getRange('A1').setFontSize(12).setFontWeight('bold');
+  var nextToTitle = sheet.getRange(1, 2).getValue();
+
+  // Only format title bigger if it seems to actually be a title, as opposed to a table starting
+  // on the first row.
+  if (nextToTitle == '') {
+    spreadsheet.getRange('A1').setFontSize(12).setFontWeight('bold');
+  }
 };
 
 // function formatSheetsAll() {
